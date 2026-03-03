@@ -79,16 +79,16 @@ const Column = (props: ColumnProps) => {
           >
             {props.title}
           </div>
-          <button
-            className={
-              props.canDelete()
-                ? `${FADE_CSS} group-hover/column:opacity-30`
-                : "hidden"
-            }
-            onClick={() => props.onDelete()}
-          >
-            <FaTrash />
-          </button>
+          {props.canDelete() ? (
+            <button
+              className={`${FADE_CSS} group-hover/column:opacity-30`}
+              onClick={() => props.onDelete()}
+            >
+              <FaTrash />
+            </button>
+          ) : (
+            <div></div>
+          )}
         </div>
         <ul className="flex flex-col gap-2">
           {column.rows.map((x) => (
